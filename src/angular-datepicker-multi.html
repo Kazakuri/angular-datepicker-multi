@@ -1,0 +1,21 @@
+<div class="adm-picker">
+  <div class="adm-picker-top-row">
+    <div class="text-center adm-picker-nav adm-picker-left-arrow" ng-click="changeMonth($event, -1)">
+      &lt;
+    </div>
+    <div class="text-center adm-picker-month">
+      {{monthToDisplay}} {{yearToDisplay}}
+    </div>
+    <div class="text-center adm-picker-nav adm-picker-right-arrow" ng-click="changeMonth($event, 1)">
+      &gt;
+    </div>
+  </div>
+  <div class="adm-picker-week-row">
+    <div class="text-center" ng-repeat="day in daysOfWeek track by $index">{{day}}</div>
+  </div>
+  <div class="adm-picker-days-row">
+    <div class="text-center adm-picker-day {{getDayClasses(day)}}" title="{{day.title}}" ng-repeat="day in days" ng-click="toggleDay($event, day)">
+      {{ day.otherMonth ? "&nbsp;" : day.date.getDate() }}
+    </div>
+  </div>
+</div>

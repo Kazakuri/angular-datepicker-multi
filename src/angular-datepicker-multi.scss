@@ -1,0 +1,70 @@
+$border-color: #eee;
+
+$empty-day-background: #fafafa;
+
+$pickable-day-non-picked-background: #fff;
+$pickable-day-non-picked-color: #000;
+
+$pickable-day-picked-background: #1f2631;
+$pickable-day-picked-color: #fff;
+
+.text-center {
+  text-align: center;
+}
+
+.adm-picker {
+  user-select: none;
+}
+
+.adm-picker, .adm-picker-top-row, .adm-picker-week-row, .adm-picker-days-row {
+  width: 100%;
+}
+
+.adm-picker-top-row > div {
+  display: inline-block;
+}
+
+.adm-picker-nav {
+  width: 16.66%;
+}
+
+.adm-picker-nav:hover {
+  cursor: pointer;
+}
+
+.adm-picker-month {
+  width: 66.66%;
+}
+
+.adm-picker-week-row > div,
+.adm-picker-days-row > div {
+  width: 14.28%;
+  display: inline-block;
+}
+
+.adm-picker-top-row, .adm-picker-day {
+  padding: 10px 0;
+}
+
+.adm-picker-day {
+  background-color: $pickable-day-non-picked-background;
+  border: 1px solid $border-color;
+  box-sizing: border-box;
+  color: $pickable-day-non-picked-color;
+}
+
+.adm-picker-day:not(.adm-picker-empty):hover {
+  background-color: $pickable-day-picked-background;
+  color: $pickable-day-picked-color;
+  cursor: pointer;
+}
+
+.adm-picker-day.adm-date-selected {
+  background-color: $pickable-day-picked-background;
+  color: $pickable-day-picked-color;
+}
+
+.adm-picker-day.adm-picker-empty, .adm-picker-day.adm-picker-empty:hover {
+  background-color: $empty-day-background;
+  cursor: default;
+}
