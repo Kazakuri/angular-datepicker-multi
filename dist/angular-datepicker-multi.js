@@ -69,8 +69,6 @@
           if (!prevented) {
             day.selected = !day.selected;
 
-            console.log(day);
-
             if (day.selected) {
               scope.ngModel.push(day.date);
             } else {
