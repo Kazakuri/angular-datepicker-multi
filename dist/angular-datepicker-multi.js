@@ -113,7 +113,7 @@
 
         scope.isSelected = function (day) {
           return scope.ngModel.some(function (d) {
-            return day.getTime() == d.getTime();
+            return day.toDateString() == d.toDateString();
           });
         };
 
