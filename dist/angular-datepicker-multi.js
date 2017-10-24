@@ -128,8 +128,8 @@
           if (previousDay.getDay() !== 0) {
             // Set the previousDay to the last Sunday <= the 1st of the month:
             //   If it's Wednesday the 1st, getDay() returns 3
-            //   We set the date to -3, meaning 3 days before the 1st (Sunday).
-            previousDay.setDate(-previousDay.getDay());
+            //   We set the date to -2, meaning 3 days before the 1st (Sunday).
+            previousDay.setDate(-previousDay.getDay() + 1);
           }
 
           var firstDayOfMonth = new Date(scope.month);
@@ -142,23 +142,24 @@
                                         0);
 
           var createDate = function () {
+            var currentDate = new Date(previousDay);
             previousDay.setDate(previousDay.getDate() + 1);
 
             return {
-              date: new Date(previousDay),
-              selected: scope.isSelected(previousDay),
-              otherMonth: previousDay.getMonth() !== firstDayOfMonth.getMonth()
+              date: currentDate,
+              selected: scope.isSelected(currentDate),
+              otherMonth: currentDate.getMonth() !== firstDayOfMonth.getMonth()
             };
           };
 
           var oneDay = 24 * 60 * 60 * 1000;
-          var maxDays = Math.round((lastDayOfMonth.getTime() - previousDay.getTime()) / oneDay);
+          var maxDays = Math.round(lastDayOfMonth.getTime() - previousDay.getTime()) / oneDay + 1;
 
           if (lastDayOfMonth.getDay() !== 6) {
             maxDays += 6 - lastDayOfMonth.getDay();
           }
 
-          for (var j = 0; j < maxDays; j++) {
+          for (var j = 0; j <= maxDays; j++) {
             days.push(createDate());
           }
 
